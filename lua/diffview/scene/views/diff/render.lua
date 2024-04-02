@@ -138,6 +138,7 @@ return function(panel)
 
   panel.render_data:clear()
   local conf = config.get_config()
+  local components_conf = conf.file_panel.components
   local width = panel:infer_width()
 
   local comp = panel.components.path.comp
@@ -166,8 +167,11 @@ return function(panel)
   local has_other_files = #panel.files.conflicting > 0 or #panel.files.staged > 0
 
   -- Don't show the 'Changes' section if it's empty and we have other visible
-  -- sections.
-  if #panel.files.working > 0 or not has_other_files then
+  -- sections or if the config auto_hide is false.
+  if
+    components_conf.working.auto_hide == false
+    or (#panel.files.working > 0 or not has_other_files)
+  then
     comp = panel.components.working.title.comp
     comp:add_text("Changes ", "DiffviewFilePanelTitle")
     comp:add_text("(" .. #panel.files.working .. ")", "DiffviewFilePanelCounter")
@@ -177,7 +181,7 @@ return function(panel)
     panel.components.working.margin.comp:add_line()
   end
 
-  if #panel.files.staged > 0 then
+  if components_conf.staged.auto_hide == false or #panel.files.staged > 0 then
     comp = panel.components.staged.title.comp
     comp:add_text("Staged changes ", "DiffviewFilePanelTitle")
     comp:add_text("(" .. #panel.files.staged .. ")", "DiffviewFilePanelCounter")

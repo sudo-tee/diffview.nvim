@@ -53,6 +53,14 @@ DEFAULT CONFIG                                  *diffview.defaults*
         flatten_dirs = true,              -- Flatten dirs that only contain one single dir
         folder_statuses = "only_folded",  -- One of 'never', 'only_folded' or 'always'.
       },
+      components = {
+        working = {
+          auto_hide = true,               -- Enable/Disable auto hiding the panel when it's empty
+        },
+        staged = {
+          auto_hide = true,               -- Enable/Disable auto hiding the panel when it's empty
+        }
+      },
       win_config = {                      -- See |diffview-config-win_config|
         position = "left",
         width = 35,

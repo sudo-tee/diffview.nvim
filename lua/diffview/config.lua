@@ -72,6 +72,14 @@ M.defaults = {
       flatten_dirs = true,
       folder_statuses = "only_folded"
     },
+    components = {
+      working = {
+        auto_hide = true,
+      },
+      staged = {
+        auto_hide = true,
+      }
+    },
     win_config = {
       position = "left",
       width = 35,
