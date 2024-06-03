@@ -1,3 +1,5 @@
+require("diffview.bootstrap")
+
 ---@diagnostic disable: deprecated
 local EventEmitter = require("diffview.events").EventEmitter
 local actions = require("diffview.actions")
@@ -54,6 +56,7 @@ M.defaults = {
   view = {
     default = {
       layout = "diff2_horizontal",
+      disable_diagnostics = false,
       winbar_info = false,
     },
     merge_tool = {
@@ -63,6 +66,7 @@ M.defaults = {
     },
     file_history = {
       layout = "diff2_horizontal",
+      disable_diagnostics = false,
       winbar_info = false,
     },
   },
